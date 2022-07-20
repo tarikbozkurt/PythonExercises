@@ -1,0 +1,16 @@
+my_list=[]
+
+def binToDec(binary_number):
+    result=0
+    binary_number = reversed(str(binary_number))
+    
+    for k,v in enumerate(binary_number):
+       
+        result += int(v)*(2**(k))
+      
+        
+    print(result)
+    
+binToDec(1001101)
+
+output : 77
