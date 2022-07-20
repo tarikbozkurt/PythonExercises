@@ -1,0 +1,26 @@
+my_list=[]
+#global değişkentanımladık. Bu listeyi fonksiyon içerisinde binary değerleri tutmak için kullacağız.
+
+def decToBin(number):
+    global my_list
+    #global değişken
+    
+    while True:
+    #eğer en son 2 ye bölünemeyecek hale geldiyse. O değeri yani "1" değerini de listeye ekle
+        if number < 2:
+            my_list.append(number)
+            break
+        else:
+            # 2 ye bölümünden kalanı listeye ekle
+            my_list.append(int(number%2))
+            # 2 ye bölünmüş halini güncelle
+            number = int(number / 2)
+            
+            
+
+
+decToBin(25)
+
+a = list(reversed(list(map(lambda x :x,my_list))))
+
+print(a)
