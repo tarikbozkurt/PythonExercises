@@ -1,0 +1,15 @@
+def vki(kg,m):
+  formul = kg / m**2
+  return formul
+  
+  
+calculateVki = vki(float(input('Kg:')),float(input('Height:')))
+
+if calculateVki < 18.49:
+    print(' you are below ideal weight ')
+    
+elif 18.5 < calculateVki and calculateVki < 24.99:
+    print('you are at ideal weight ')
+    
+else:
+    print('you are above ideal weight')
