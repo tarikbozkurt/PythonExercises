@@ -1,0 +1,107 @@
+class Kart:
+    def __init__(self,ad,soyad,bankaAdi,para):
+        self.ad = ad
+        self.soyad = soyad
+        self.bankaAdi  = bankaAdi
+        self.para = para
+        
+        
+    def BilgiVer(self):
+        
+        return '{} / {} / {} / {}'.format(self.ad,self.soyad,self.bankaAdi,self.para)
+        
+        
+
+class Atm:
+    def __init__(self,ad,para):
+        self.ad = ad
+        self.para = para
+        
+    
+    
+    
+    def BilgiVer(self):
+        return "Atm : {},  {} ".format(self.ad,self.para)
+    
+    def AyniMi(self,kart):
+        if self.ad == kart.bankaAdi:
+            return True
+        else:
+            return False
+            
+        
+    
+    def ParaCek(self,kart,miktar):
+        if kart.bankaAdi == self.ad:
+            print('bankalar aynı komisyon alınmayacak')
+            if kart.para >= miktar:
+                if self.para >= miktar:
+                    kart.para -=miktar
+                    self.para -=miktar
+                else:
+                    print('Bankamatikte yeterli para yok')
+                    print('islem yapılmadi')
+            else:
+                print('Kartta yetersiz bakiye sorunu')
+                print('islem yapılmadi')
+        else:
+                
+            print('Farklı bankada işlem %3 komisyon alınacak')
+            if kart.para >= miktar:
+                if self.para >= miktar:
+                    kart.para -=miktar-(miktar*3)/100
+                    self.para -=miktar-(miktar*3)/100
+                else:
+                    print('Bankamatikte yeterli para yok')
+                    print('islem yapılmadi')
+            else:
+                print('Kartta yetersiz bakiye sorunu')
+                print('islem yapılmadi')
+       
+       
+        
+    def ParaYatir(self,kart,miktar):
+        kart.para +=miktar
+        self.para +=miktar
+        
+        if not self.AyniMi(kart):
+            kart.para -= miktar * 0.03
+            self.para +=miktar * 0.03
+            
+        print("{} Tl yatırıldı \n Atm 'de {} TL vardır.".format(miktar,self.para))
+            
+    
+   
+    #def AyniMi():
+    
+#my_cart = Kart('tarik','bozkurt','Garanti',2500004)
+
+my_cart_2= Kart('tarik','bozkurt','Garanti',200)
+
+garanti_bankasi = Atm('Garanti',300)
+
+
+#add_atm.ParaYatir(my_cart,3500)
+#print(add_atm.BilgiVer())
+print(garanti_bankasi.BilgiVer())
+print(my_cart_2.BilgiVer())
+print("#################Önce##########")
+#garanti_bankasi.ParaCek(my_cart,2500003)
+garanti_bankasi.ParaCek(my_cart_2,100)
+print("###########################")
+print(garanti_bankasi.BilgiVer())
+print(my_cart_2.BilgiVer())
+print("#################Sonra##########")
+print(garanti_bankasi.BilgiVer())
+print(my_cart_2.BilgiVer())
+print("################################")
+#garanti_bankasi.ParaCek(my_cart,2500003)
+garanti_bankasi.ParaYatir(my_cart_2,10000)
+print("##############ÖNCE#############")
+print(garanti_bankasi.BilgiVer())
+print(my_cart_2.BilgiVer())
+print("################################")
+print("#################Sonra##########")
+
+
+
